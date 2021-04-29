@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:id="@+id/banner_first_login"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="center_horizontal"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/first_login"
+        android:background="@drawable/bg_first_login"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/tv_banner_first_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:text="@string/app_name"
+            android:textSize="120sp"
+            android:textStyle="bold"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="20dp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/fibre_font"
+            android:layout_centerHorizontal="true" />
+        <TextView
+            android:id="@+id/tv_banner_desc_first_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:text="@string/app_name_desc"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="50dp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/fibre_font"
+            android:layout_centerHorizontal="true" />
+        <ImageView
+            android:id="@+id/img_banner_first_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/ic_banner_first_login"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/first_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/banner_first_login"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:orientation="vertical">
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_sign_in"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/sign_in"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="50dp"
+            android:backgroundTint="@color/mitago_color"
+            android:textAllCaps="false"
+            android:background="@drawable/bg_btn_sign_in"/>
+        <TextView
+            android:id="@+id/btn_sign_up"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hoặc đăng ký ngay!"
+            android:layout_gravity="center_horizontal"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_margin="15dp"
+            android:textColor="@color/mitago_color"/>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

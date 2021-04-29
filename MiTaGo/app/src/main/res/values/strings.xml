@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">MiTa Go</string>
+    <string name="app_name_desc">Ứng dụng tiện ích của Minh Tân</string>
+    <string name="sign_in">Đăng nhập</string>
+    <string name="sign_in_phone">Tiếp tục với số điện thoại</string>
+    <string name="sign_in_fb">Tiếp tục với Facebook</string>
+    <string name="sign_in_gg">Tiếp tục với Google</string>
+    <string name="sign_up">Hoặc đăng ký ngay!</string>
+    <string name="or">hoặc</string>
 </resources>
