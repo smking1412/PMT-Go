@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "709454229208",
+    "project_id": "go-taxi-c128d",
+    "storage_bucket": "go-taxi-c128d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:709454229208:android:e888c25bafab95d5c9f1ad",
+        "android_client_info": {
+          "package_name": "com.shingetsu.mitadriver"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "709454229208-lk2lqbrcid5hh55se1290u0ek3n3l2h7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCxHqi6YdGEqjkdgYPBDqnfxrSASu19-I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "709454229208-lk2lqbrcid5hh55se1290u0ek3n3l2h7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:709454229208:android:677bf03e8815ae79c9f1ad",
+        "android_client_info": {
+          "package_name": "com.shingetsu.mitago"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "709454229208-lk2lqbrcid5hh55se1290u0ek3n3l2h7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCxHqi6YdGEqjkdgYPBDqnfxrSASu19-I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "709454229208-lk2lqbrcid5hh55se1290u0ek3n3l2h7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

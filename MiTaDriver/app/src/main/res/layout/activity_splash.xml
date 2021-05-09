@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/black"
+    android:background="@color/splash_background"
     tools:context=".SplashActivity"
     android:gravity="center_vertical">
 
@@ -23,7 +23,17 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:fontFamily="@font/fibre_font"
-        android:text="@string/app_name"
+        android:text="@string/app_name_1"
+        android:textColor="@color/white"
+        android:textSize="150sp"/>
+
+    <TextView
+        android:id="@+id/tv_logo_name_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/fibre_font"
+        android:text="@string/app_name_2"
         android:textColor="@color/white"
         android:textSize="70sp"/>
 </LinearLayout>

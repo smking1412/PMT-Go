@@ -29,7 +29,7 @@ class SplashActivity : AppCompatActivity() {
         logoName.startAnimation(logoNameAnimation)
 
         Handler().postDelayed({
-            val intent = Intent(this,MainActivity::class.java)
+            val intent = Intent(this,FirstScreenActivity::class.java)
             startActivity(intent)
             finish()
         },1000)
