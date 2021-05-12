@@ -47,7 +47,6 @@ class FirstScreenActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_first_screen)
         init()
-        //check permission
         checkPermission()
         evenClick()
     }
