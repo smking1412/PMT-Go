@@ -72,7 +72,6 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
         var root = inflater.inflate(R.layout.fragment_home, container, false)
 
         init()
-//        initActive(root)
 
         mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
