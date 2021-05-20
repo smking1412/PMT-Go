@@ -46,7 +46,6 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
     private lateinit var driverLocationRef:DatabaseReference
 
     //flag
-//    var checkActive : Boolean = false
 
     private lateinit var checkBox : CheckBox
 
