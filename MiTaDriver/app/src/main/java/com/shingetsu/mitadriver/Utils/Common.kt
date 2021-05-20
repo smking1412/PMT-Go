@@ -9,8 +9,15 @@ import android.content.Intent
 import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.os.Build
+import android.widget.Toast
 import androidx.core.app.NotificationCompat
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.shingetsu.mitadriver.Models.DriverMiTa
 import com.shingetsu.mitadriver.R
 import java.lang.StringBuilder
@@ -26,7 +33,6 @@ object Common {
     var currentUser: DriverMiTa? = null
     val DRIVER_INFO_REFERENCE: String = "DriverInfo"
     val DRIVER_LOCATION_REFERENCE: String = "DriverLocation"
-
 
     fun buildWelcomeMessage(): String {
         return StringBuilder("Xin chào, ")

@@ -8,6 +8,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.shingetsu.mitadriver.Models.TokenModel
 import com.shingetsu.mitadriver.R
+import com.shingetsu.mitadriver.ui.home.HomeFragment
 
 /**
  * Created by Phạm Minh Tân - Shin on 5/9/2021.
@@ -33,10 +34,23 @@ object UserUtils {
         FirebaseDatabase.getInstance()
             .getReference(Common.TOKEN_REFERENCE)
             .child(FirebaseAuth.getInstance().currentUser!!.uid)
-            .setValue(token)
+            .setValue(tokenModel)
             .addOnFailureListener{e->
                 Toast.makeText(context,e.message,Toast.LENGTH_SHORT).show()
             }
             .addOnSuccessListener {  }
+    }
+
+    fun updateStatusDriver(context: Context, status: Boolean){
+        val update_status = HashMap<String, Any>()
+        update_status.put("status", status)
+        FirebaseDatabase.getInstance().getReference(Common.DRIVER_INFO_REFERENCE)
+            .child(FirebaseAuth.getInstance().currentUser.uid)
+            .updateChildren(update_status)
+            .addOnSuccessListener {
+            }
+            .addOnFailureListener {e->
+            }
+        Common.currentUser!!.status = status
     }
 }

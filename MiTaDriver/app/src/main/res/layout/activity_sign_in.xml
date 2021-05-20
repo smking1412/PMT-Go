@@ -5,13 +5,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/mitago_driver_color"
     android:orientation="vertical">
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar_sign_in"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
     <LinearLayout
         android:id="@+id/banner_sign_in"
         android:layout_width="match_parent"

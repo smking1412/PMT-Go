@@ -13,7 +13,7 @@ import com.shingetsu.mitago.R
  * Created by Phạm Minh Tân - Shin on 5/9/2021.
  */
 object UserUtils {
-    fun updateUser(view : View?, updateData : Map<String,Any>) {
+    fun updateUser(view : View?,  updateData : Map<String,Any>) {
         FirebaseDatabase.getInstance()
             .getReference(Common.RIDER_INFO_REFERENCE)
             .child(FirebaseAuth.getInstance().currentUser!!.uid)
@@ -33,7 +33,7 @@ object UserUtils {
         FirebaseDatabase.getInstance()
             .getReference(Common.TOKEN_REFERENCE)
             .child(FirebaseAuth.getInstance().currentUser!!.uid)
-            .setValue(token)
+            .setValue(tokenModel)
             .addOnFailureListener{e->
                 Toast.makeText(context,e.message,Toast.LENGTH_SHORT).show()
             }

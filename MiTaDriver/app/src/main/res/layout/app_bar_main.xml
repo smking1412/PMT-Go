@@ -15,8 +15,22 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/Theme.MiTaDriver.PopupOverlay" />
+            android:background="@color/mitago_driver_color"
+            app:popupTheme="@style/Theme.MiTaDriver.PopupOverlay" >
+
+            <CheckBox
+                android:id="@+id/cb_mode_active"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/white"
+                android:checked="false"
+                android:textSize="20sp"
+                android:layout_margin="10dp"
+                android:layout_gravity="end"
+                android:text="Bật tìm cuốc"
+                android:textColor="@color/white" />
+
+        </androidx.appcompat.widget.Toolbar>
 
     </com.google.android.material.appbar.AppBarLayout>
 

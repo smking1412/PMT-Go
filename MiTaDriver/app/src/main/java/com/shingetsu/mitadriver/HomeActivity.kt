@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.view.Menu
 import android.view.View
+import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
@@ -18,6 +19,8 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.navigation.NavController
 import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
@@ -26,6 +29,7 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.shingetsu.mitadriver.Utils.Common
 import com.shingetsu.mitadriver.Utils.UserUtils
+import com.shingetsu.mitadriver.ui.home.HomeFragment
 import java.lang.StringBuilder
 import java.lang.ref.Reference
 
@@ -38,8 +42,14 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var waitingDialog: AlertDialog
     private lateinit var storageReference: StorageReference
 
+    private lateinit var homeFragment: HomeFragment
     private lateinit var img_avatar: ImageView
     private var imageUri: Uri? = null
+
+    //
+
+    //flag
+    private var checkActive: Boolean = false
 
     companion object {
         val PICK_IMAGE_REQUEST = 141
@@ -49,13 +59,9 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
         val toolbar: Toolbar = findViewById(R.id.toolbar)
+        val checkBox: CheckBox = findViewById(R.id.cb_mode_active)
         setSupportActionBar(toolbar)
 
-//        val fab: FloatingActionButton = findViewById(R.id.fab)
-//        fab.setOnClickListener { view ->
-//            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                .setAction("Action", null).show()
-//        }
         drawerLayout = findViewById(R.id.drawer_layout)
         navView = findViewById(R.id.nav_view)
         navController = findNavController(R.id.nav_host_fragment)
@@ -69,6 +75,27 @@ class HomeActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
         init()
+
+        //Call Fragment Homefragment
+
+        //Mode Status of Driver
+        checkActive = Common.currentUser!!.status
+        if (checkActive == false) {
+            checkBox.isChecked = false
+        } else {
+            checkBox.isChecked = true
+        }
+        checkBox.setOnClickListener {
+            if (checkBox.isChecked == true){
+                checkActive = true
+//                homeFragment.initActive(checkActive)
+                UserUtils.updateStatusDriver(this,checkActive)
+            } else{
+                checkActive = false
+//                homeFragment.initActive(checkActive)
+                UserUtils.updateStatusDriver(this,checkActive)
+            }
+        }
     }
 
     private fun init() {
@@ -111,13 +138,11 @@ class HomeActivity : AppCompatActivity() {
 
         val headerView = navView.getHeaderView(0)
         val txtName = headerView.findViewById<View>(R.id.tv_fullname) as TextView
-        val txtPhone = headerView.findViewById<View>(R.id.tv_phone) as TextView
         val txtRateStar = headerView.findViewById<View>(R.id.tv_rate_star) as TextView
         img_avatar = headerView.findViewById(R.id.img_avatar)
 
 
         txtName.setText(Common.buildWelcomeMessage())
-        txtPhone.setText(Common.currentUser!!.phoneNumber)
         txtRateStar.setText(StringBuilder().append(Common.currentUser!!.rating))
         if (Common.currentUser != null && Common.currentUser!!.avatar != null && !TextUtils.isEmpty(
                 Common.currentUser!!.avatar
@@ -172,7 +197,7 @@ class HomeActivity : AppCompatActivity() {
                             waitingDialog.dismiss()
                         }
                         .addOnCompleteListener { task ->
-                            if  (task.isSuccessful){
+                            if (task.isSuccessful) {
                                 avatarFolder.downloadUrl.addOnSuccessListener { uri ->
                                     val update_data = HashMap<String, Any>()
                                     update_data.put("avatar", uri.toString())
@@ -183,8 +208,11 @@ class HomeActivity : AppCompatActivity() {
                             waitingDialog.dismiss()
                         }
                         .addOnProgressListener { taskSnapShot ->
-                            val progress = (100.0 * taskSnapShot.bytesTransferred/ taskSnapShot.totalByteCount)
-                            waitingDialog.setMessage(StringBuilder("Uploading: ").append(progress).append("%"))
+                            val progress =
+                                (100.0 * taskSnapShot.bytesTransferred / taskSnapShot.totalByteCount)
+                            waitingDialog.setMessage(
+                                StringBuilder("Uploading: ").append(progress).append("%")
+                            )
                         }
                 }
             }

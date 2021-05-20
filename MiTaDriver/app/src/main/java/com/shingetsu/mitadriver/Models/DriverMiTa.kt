@@ -15,4 +15,5 @@ class DriverMiTa {
      var email: String = ""
      var rating = 0.0
      var avatar : String = ""
+     var status : Boolean = false
 }

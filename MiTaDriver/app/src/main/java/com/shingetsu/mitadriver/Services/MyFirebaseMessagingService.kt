@@ -22,12 +22,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         super.onMessageReceived(remoteMessage)
         val data = remoteMessage.data
         if  (data!= null){
-            Common.showNotificaion(this,
-                Random.nextInt(),
-                data[Common.NOTI_TITLE],
-                data[Common.NOTI_BODY],
-            null)
-
+            Common.showNotificaion(this, Random.nextInt(), data[Common.NOTI_TITLE], data[Common.NOTI_BODY], null)
         }
     }
 }

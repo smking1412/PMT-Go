@@ -174,7 +174,7 @@ class HomeActivity : AppCompatActivity() {
                             if  (task.isSuccessful){
                                 avatarFolder.downloadUrl.addOnSuccessListener { uri ->
                                     val update_data = HashMap<String, Any>()
-                                    update_data.put("avatarRider", uri.toString())
+                                    update_data.put("avatar", uri.toString())
 
                                     UserUtils.updateUser(drawerLayout, update_data)
                                 }

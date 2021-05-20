@@ -19,7 +19,7 @@
             android:layout_height="match_parent"
             android:text="@string/register_for_driver"
             android:textColor="@color/black"
-            android:gravity="center_vertical"
+            android:gravity="center"
             android:padding="5dp"
             android:textSize="20sp"
             android:textStyle="bold"/>

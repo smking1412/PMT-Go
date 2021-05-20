@@ -1,11 +1,12 @@
 package com.shingetsu.mitadriver.ui.home
 
-import android.location.Location
+import android.content.Context
 import android.os.Bundle
 import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CheckBox
 import android.widget.RelativeLayout
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -24,6 +25,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.shingetsu.mitadriver.R
 import com.shingetsu.mitadriver.Utils.Common
+import com.shingetsu.mitadriver.Utils.UserUtils
 
 
 class HomeFragment : Fragment(), OnMapReadyCallback {
@@ -31,6 +33,7 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
     private lateinit var homeViewModel: HomeViewModel
     private lateinit var mapFragment: SupportMapFragment
 
+    //Location
     private lateinit var googleMap: GoogleMap
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
     private lateinit var locationCallback: LocationCallback
@@ -42,9 +45,15 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
     private lateinit var geoFire: GeoFire
     private lateinit var driverLocationRef:DatabaseReference
 
+    //flag
+//    var checkActive : Boolean = false
+
+    private lateinit var checkBox : CheckBox
+
+
     private val onlineValueEventListener = object:ValueEventListener{
         override fun onDataChange(snapshot: DataSnapshot) {
-            if (snapshot.exists()){
+            if (snapshot.exists() && currentUserRef != null){
                 currentUserRef.onDisconnect().removeValue()
             }
         }
@@ -61,9 +70,10 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
         savedInstanceState: Bundle?
     ): View? {
         homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_home, container, false)
+        var root = inflater.inflate(R.layout.fragment_home, container, false)
 
         init()
+//        initActive(root)
 
         mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
@@ -72,6 +82,7 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
 
     private fun init() {
         onlineRef = FirebaseDatabase.getInstance().getReference().child(".info/connected")
+
         driverLocationRef = FirebaseDatabase.getInstance().getReference(Common.DRIVER_LOCATION_REFERENCE)
         currentUserRef = FirebaseDatabase.getInstance().getReference(Common.DRIVER_LOCATION_REFERENCE).child(
             FirebaseAuth.getInstance().currentUser!!.uid
@@ -133,6 +144,7 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
         fusedLocationProviderClient?.removeLocationUpdates(locationCallback)
         geoFire.removeLocation(FirebaseAuth.getInstance().currentUser!!.uid)
         onlineRef.removeEventListener(onlineValueEventListener)
+
         super.onDestroy()
     }
 
