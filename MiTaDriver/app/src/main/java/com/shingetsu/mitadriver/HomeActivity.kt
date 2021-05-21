@@ -31,7 +31,6 @@ import com.shingetsu.mitadriver.Utils.Common
 import com.shingetsu.mitadriver.Utils.UserUtils
 import com.shingetsu.mitadriver.ui.home.HomeFragment
 import java.lang.StringBuilder
-import java.lang.ref.Reference
 
 class HomeActivity : AppCompatActivity() {
 
@@ -59,7 +58,6 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
         val toolbar: Toolbar = findViewById(R.id.toolbar)
-        val checkBox: CheckBox = findViewById(R.id.cb_mode_active)
         setSupportActionBar(toolbar)
 
         drawerLayout = findViewById(R.id.drawer_layout)
@@ -76,26 +74,6 @@ class HomeActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
         init()
 
-        //Call Fragment Homefragment
-
-        //Mode Status of Driver
-        checkActive = Common.currentUser!!.status
-        if (checkActive == false) {
-            checkBox.isChecked = false
-        } else {
-            checkBox.isChecked = true
-        }
-        checkBox.setOnClickListener {
-            if (checkBox.isChecked == true){
-                checkActive = true
-//                homeFragment.initActive(checkActive)
-                UserUtils.updateStatusDriver(this,checkActive)
-            } else{
-                checkActive = false
-//                homeFragment.initActive(checkActive)
-                UserUtils.updateStatusDriver(this,checkActive)
-            }
-        }
     }
 
     private fun init() {
